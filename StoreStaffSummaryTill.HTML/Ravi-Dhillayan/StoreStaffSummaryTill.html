@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Darkstore Summary</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fafb;
+      margin: 20px;
+      color: #333;
+    }
+
+    .header {
+      background-color: #0078d4;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th {
+      padding: 12px;
+      background: linear-gradient(90deg, #0054a6, #0078d4);
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+      border: 1px solid #e0e0e0;
+    }
+
+    td {
+      padding: 12px;
+      border: 1px solid #e0e0e0;
+      text-align: center;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #f3f6fc; /* Light blue for odd rows */
+    }
+
+    tr:nth-child(even) {
+      background-color: #eaf2f8; /* Slightly lighter blue for even rows */
+    }
+
+    tr:hover {
+      background-color: #d1e7fd; /* Highlighted blue on hover */
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="number"] {
+      width: 80px; /* Slightly wider for better usability */
+      padding: 8px;
+      text-align: center;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      font-size: 14px;
+      background-color: #f9f9f9;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="number"]:hover {
+      border-color: #0078d4;
+      background-color: #f0f8ff; /* Light blue background on hover */
+    }
+
+    input[type="number"]:focus {
+      border-color: #0054a6;
+      background-color: #ffffff;
+      box-shadow: 0 0 6px rgba(0, 84, 166, 0.5);
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none; /* Hide spin buttons */
+      margin: 0;
+    }
+
+    input[type="number"]::placeholder {
+      color: #aaa;
+      font-style: italic;
+    }
+
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2 id="date-time"></h2>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>DARKSTORE NAME</th>
+        <th>SM</th>
+        <th>SI</th>
+        <th>PP</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody id="data-table">
+      <tr>
+        <td>Kalyan nagar</td>
+        <td><input type="number" value="1" onchange="updateTotal(this)" /></td>
+        <td><input type="number" value="1" onchange="updateTotal(this)" /></td>
+        <td><input type="number" value="4" onchange="updateTotal(this)" /></td>
+        <td class="total">6</td>
+      </tr>
+      <tr>
+        <td>Basaweshwar Nagar Mnow</td>
+        <td><input type="number" value="1" onchange="updateTotal(this)" /></td>
+        <td><input type="number" value="1" onchange="updateTotal(this)" /></td>
+        <td><input type="number" value="2" onchange="updateTotal(this)" /></td>
+        <td class="total">4</td>
+      </tr>
+      <tr>
+        <td>Yelahanka Mnow</td>
+        <td><input type="number" value="2" onchange="updateTotal(this)" /></td>
+        <td><input type="number" value="0" onchange="updateTotal(this)" /></td>
+        <td><input type="number" value="8" onchange="updateTotal(this)" /></td>
+        <td class="total">10</td>
+      </tr>
+      <tr>
+        <td>Begur Mnow</td>
+        <td><input type="number" name="0" onchange="updateTotal(this)"/> </td>
+        <td><input type="number" name="0" onchange="updateTotal(this)"/> </td>
+        <td><input type="number" name ="0" onchange="updateTotal(this)"/> </td>
+        <td class="total">0</td>
+        </tr>
+        <tr>
+          <td>Thyagaraja Nagar Mnow</td>
+          <td><input type="number" name="0" onchange="updateTotal(this)"/> </td>
+          <td><input type="number" name="0" onchange="updateTotal(this)"/></td>
+          <td><input type="number" name="0" onchange="updateTotal(this)"/> </td>
+          <td class="total">0</td>
+        </tr>
+        <td>JP nagar Mnow</td>
+        <td> <input type="number" name ="0" onchange="updateTotal(this)"></td>
+        <td> <input type="number" name ="0" onchange="updateTota(this)"></td>
+        <td> <input type="number" name ="0" onchange="updateTotal(this)"></td>
+        <td class="total">0</td>
+      </tr>
+      <td>SarjaPur road Mnow</td>
+      <td> <input type="number" name="0" onchange="updateTotal(this)"></td>
+      <td> <input type="number" name="0" onchange="updateTotal(this)"></td>
+      <td><input type="number" name="0" onchange="updateTotal(this)"></td>
+      <td class="total">0</td>
+      <!-- Add more rows here as needed -->
+    </tbody>
+  </table>
+
+  <script>
+    // Update date and time dynamically
+    const now = new Date();
+    const dateTimeElement = document.getElementById('date-time');
+    dateTimeElement.innerHTML = `Date - ${now.toLocaleDateString('en-GB')}<br>Time - ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+
+    // Update total dynamically
+    function updateTotal(input) {
+      const row = input.parentElement.parentElement;
+      const inputs = row.querySelectorAll('input');
+      let sum = 0;
+      inputs.forEach(inp => sum += parseInt(inp.value) || 0);
+      row.querySelector('.total').textContent = sum;
+    }
+  </script>
+  <script>
+    // Function to generate a random color
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    // Function to calculate luminance of a color
+    function getLuminance(hexColor) {
+      const rgb = hexColor
+        .replace('#', '')
+        .match(/.{2}/g)
+        .map(c => parseInt(c, 16) / 255);
+      const [r, g, b] = rgb.map(c =>
+        c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4)
+      );
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    }
+
+    // Function to determine text color based on background luminance
+    function getTextColor(bgColor) {
+      return getLuminance(bgColor) > 0.5 ? '#000000' : '#FFFFFF'; // Black for light backgrounds, white for dark
+    }
+
+    // Function to update the background and text colors of table cells
+    function updateTableColors() {
+      const cells = document.querySelectorAll('table td, table th'); // Select all table cells and headers
+      cells.forEach(cell => {
+        const bgColor = getRandomColor();
+        const textColor = getTextColor(bgColor);
+        cell.style.backgroundColor = bgColor;
+        cell.style.color = textColor;
+        cell.style.fontSize = '18px'; // Set larger font size
+        cell.style.fontWeight = 'bold'; // Make text bold
+      });
+    }
+
+    // Change colors every 20 minutes (20 minutes = 20 * 60 * 1000 milliseconds)
+    setInterval(updateTableColors, 20 * 60 * 1000);
+
+    // Initial call to set colors immediately on page load
+    updateTableColors();
+  </script>
+</body>
+</html>
